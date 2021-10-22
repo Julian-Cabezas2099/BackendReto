@@ -22,23 +22,26 @@ public class Bike implements Serializable {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     private String brand;
     private Integer year;
-    private String name;
     private String description;
     
     @ManyToOne
-    @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("bike")
+    @JoinColumn(name = "categoryIdFk")
+    @JsonIgnoreProperties("bikes")
     private Category category;
-    
+
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "bike")
+    // @JsonIgnoreProperties("bike")
     @JsonIgnoreProperties({"bike","client"})
     private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.ALL}, mappedBy = "bike")
-    @JsonIgnoreProperties({"bike","messages"})
-    public List<Reservation> reservations;
+    @JsonIgnoreProperties({"bike","client"})
+    private List<Reservation> reservations;
+
+    
 
     public Integer getId() {
         return id;
@@ -87,6 +90,22 @@ public class Bike implements Serializable {
 
     public String getDescription() {
         return description;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     

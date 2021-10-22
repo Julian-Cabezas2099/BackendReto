@@ -2,7 +2,7 @@ package com.Reto3.springboot.app.Models.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
+// import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,26 +14,27 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
-
-
 @Entity
 @Table(name = "message")
 public class Message implements Serializable{
 	
 	
-	  @Id
+	  	@Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Integer idMessage;
 	    private String messageText;
 	    
-	    @ManyToOne(cascade = {CascadeType.ALL})
-	    @JoinColumn(name="id")
+	    // @ManyToOne(cascade = {CascadeType.ALL})
+		@ManyToOne
+	    @JoinColumn(name="idBikeFk")
 	    @JsonIgnoreProperties({"messages", "reservations"})
+		// @JsonIgnoreProperties("messages")
 	    private Bike bike;
 
 	    @ManyToOne
-	    @JoinColumn(name="clientId")
-	    @JsonIgnoreProperties({"reservations", "messages"})
+	    @JoinColumn(name="IdClientFk")
+	    @JsonIgnoreProperties({"messages","reservations"})
+		// @JsonIgnoreProperties("messages")
 	    private Client client;
 
 		public Integer getIdMessage() {
