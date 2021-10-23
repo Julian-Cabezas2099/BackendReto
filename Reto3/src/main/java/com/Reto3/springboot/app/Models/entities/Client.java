@@ -97,6 +97,10 @@ public class Client implements Serializable {
 		this.messages = messages;
 	}
 
+	public void setIdClient(Integer idClient) {
+		this.idClient = idClient;
+	}
+
     
      
     
