@@ -35,6 +35,35 @@ public class BikeService {
             }
         }
     }
+    public Bike update(Bike Bike){
+        if(Bike.getId()!=null){
+            Optional<Bike> e= bikeRepository.getBike(Bike.getId());
+            if(e != null){
+                if(Bike.getName()!=null){
+                    e.get().setName(Bike.getName());
+                }
+                if(Bike.getBrand()!=null){
+                    e.get().setBrand(Bike.getBrand());
+                }
+                if(Bike.getYear()!=null){
+                    e.get().setYear(Bike.getYear());
+                }
+                if(Bike.getDescription()!=null){
+                    e.get().setDescription(Bike.getDescription());
+                }
+                if(Bike.getCategory()!=null){
+                    e.get().setCategory(Bike.getCategory());
+                }
+
+                bikeRepository.save(e.get());
+                return e.get();
+            }else{
+                return Bike;
+            }
+        }else{
+            return Bike;
+        }
+    }
 
     public Optional<Bike> getBikes(int id) {
         return bikeRepository.getBike(id);
