@@ -28,7 +28,7 @@ public class ReservationService {
 	            return repositoryR.save(reservation);
 	        }else{
 	            Optional<Reservation> e= repositoryR.getReservation(reservation.getIdReservation());
-	            if(e.isEmpty()){
+	            if(e == null){
 	                return repositoryR.save(reservation);
 	            }else{
 	                return reservation;
@@ -39,7 +39,7 @@ public class ReservationService {
 	    public Reservation update(Reservation reservation){
 	        if(reservation.getIdReservation()!=null){
 	            Optional<Reservation> e= repositoryR.getReservation(reservation.getIdReservation());
-	            if(!e.isEmpty()){
+	            if( e != null){
 
 	                if(reservation.getStartDate()!=null){
 	                    e.get().setStartDate(reservation.getStartDate());

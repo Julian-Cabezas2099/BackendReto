@@ -28,7 +28,7 @@ public class AdminService {
             return metodosCrudAdmin.save(admin);
         } else {
             Optional<Admin> e = metodosCrudAdmin.getAdmin(admin.getId());
-            if (e.isEmpty()) {
+            if (e == null) {
                 return metodosCrudAdmin.save(admin);
             } else {
                 return admin;
@@ -39,7 +39,7 @@ public class AdminService {
     public Admin update(Admin admin) {
         if (admin.getId() != null) {
             Optional<Admin> e = metodosCrudAdmin.getAdmin(admin.getId());
-            if (!e.isEmpty()) {
+            if (e != null) {
                 if (admin.getName() != null) {
                     e.get().setName(admin.getName());
                 }

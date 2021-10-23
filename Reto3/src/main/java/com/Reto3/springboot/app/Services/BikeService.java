@@ -28,7 +28,7 @@ public class BikeService {
             return bikeRepository.save(p);
         }else{
             Optional<Bike> paux=bikeRepository.getBike(p.getId());
-            if (paux.isEmpty()){
+            if (paux == null){
                 return bikeRepository.save(p);
             }else{
                 return p;
