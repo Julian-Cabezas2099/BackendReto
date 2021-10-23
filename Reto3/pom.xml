@@ -70,6 +70,12 @@
 			<artifactId>javassist</artifactId>
 			<version>3.25.0-GA</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
