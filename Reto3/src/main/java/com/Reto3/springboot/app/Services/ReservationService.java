@@ -1,12 +1,21 @@
 package com.Reto3.springboot.app.Services;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Reto3.springboot.app.Models.entities.Client;
 import com.Reto3.springboot.app.Models.entities.Reservation;
+import com.Reto3.springboot.app.Models.reports.CountReservation;
+import com.Reto3.springboot.app.Models.reports.TopClient;
 import com.Reto3.springboot.app.Repository.ReservationRepository;
 
 @Service
@@ -83,4 +92,51 @@ public class ReservationService {
 	        }).orElse(false);
 	        return aBoolean;
 	    }
+
+	
+	    
+	    //Servicio de la consulta entre dos fechas
+	    public List<Reservation>reporteFechas(String date1, String date2){
+
+			SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
+			Date dateOne = new Date();
+			Date dateTwo = new Date();
+
+			try {
+				dateOne = parser.parse(date1);
+				dateTwo = parser.parse(date2);
+			} catch (ParseException e) {
+
+				e.printStackTrace();
+			}
+			if(dateOne.before(dateTwo)){
+				return repositoryR.reporteFechas(dateOne, dateTwo);
+			}else{
+				return new ArrayList<>();
+			}
+
+	    	
+	    }
+	    
+	 	//servicio para completed vs cancelled
+	    // public HashMap<String,Integer> countS(){
+
+	    // 	Map<String, Integer> nueva = new HashMap<>();	
+
+	    // 	int completed = repositoryR.getStatus("completed").size();
+		// 	int cancelled = repositoryR.getStatus("cancelled").size();
+
+	    // 	nueva.put("completed", completed);
+	    // 	nueva.put("cancelled", cancelled);
+			
+		// 	return (HashMap<String,Integer>) nueva;
+		// }
+		public CountReservation countS(){
+			return repositoryR.getStatus();
+		}
+
+		public List<TopClient> getTopClients(){
+			return repositoryR.getTopClients();
+		}
+		
 }

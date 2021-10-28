@@ -1,5 +1,7 @@
 package com.Reto3.springboot.app.controllers;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Reto3.springboot.app.Models.entities.Client;
 import com.Reto3.springboot.app.Models.entities.Reservation;
+import com.Reto3.springboot.app.Models.reports.CountReservation;
+import com.Reto3.springboot.app.Models.reports.TopClient;
 import com.Reto3.springboot.app.Services.ReservationService;
 
 @RestController
@@ -52,5 +57,21 @@ public class ReservationController {
 	    public boolean delete(@PathVariable("id") int reservationId) {
 	        return service.deleteReservation(reservationId);
 	    }
-	
+
+		@GetMapping("/report-dates/{fechainicio}/{fechafin}")
+	    public List<Reservation> getReport(@PathVariable("fechainicio") String date1, @PathVariable("fechafin") String date2 ){
+	        // return service.reporte(date1, date2);
+			return service.reporteFechas(date1, date2);
+
+	    }
+	    
+	    @GetMapping("/report-status")
+	    public CountReservation statusRe(){
+	        return service.countS();
+	    }
+
+		@GetMapping("/report-clients")
+    	public List<TopClient> getClient(){
+        return service.getTopClients();
+    }
 }

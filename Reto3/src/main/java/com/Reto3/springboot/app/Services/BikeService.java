@@ -15,8 +15,8 @@ public class BikeService {
     @Autowired
     private BikeRepository bikeRepository;
 
-    public List<Bike> getALL(){
-        return bikeRepository.getALL();
+    public List<Bike> getAll(){
+        return bikeRepository.getAll();
     }
 
     public Optional<Bike> getBike(int id){

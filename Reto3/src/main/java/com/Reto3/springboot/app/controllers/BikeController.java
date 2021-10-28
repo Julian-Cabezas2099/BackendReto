@@ -23,7 +23,6 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins ="*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("/api/Bike")
-
 public class BikeController {
     @Autowired
 
@@ -31,7 +30,7 @@ public class BikeController {
 
     @GetMapping("/all")
     public List<Bike> getBikes(){
-        return bikeService.getALL();
+        return bikeService.getAll();
     }
 
     @GetMapping("/{id}")

@@ -13,7 +13,7 @@ public class BikeRepository {
     @Autowired
     private BikeCrudRepository BikeCrud;
 
-    public List<Bike> getALL(){
+    public List<Bike> getAll(){
         return (List<Bike>) BikeCrud.findAll();
     }
 
