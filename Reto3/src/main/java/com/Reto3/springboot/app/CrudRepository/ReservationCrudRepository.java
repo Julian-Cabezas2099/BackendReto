@@ -6,9 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Date;
 import java.util.List;
 
-import com.Reto3.springboot.app.Models.entities.Client;
+
 import com.Reto3.springboot.app.Models.entities.Reservation;
-import com.Reto3.springboot.app.Models.reports.TopClient;
+
 
 public interface ReservationCrudRepository extends CrudRepository<Reservation, Integer>{
 

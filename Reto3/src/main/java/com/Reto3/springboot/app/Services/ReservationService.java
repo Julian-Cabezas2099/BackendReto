@@ -4,15 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Reto3.springboot.app.Models.entities.Client;
+
 import com.Reto3.springboot.app.Models.entities.Reservation;
 import com.Reto3.springboot.app.Models.reports.CountReservation;
 import com.Reto3.springboot.app.Models.reports.TopClient;
@@ -95,7 +93,9 @@ public class ReservationService {
 
 	
 	    
-	    //Servicio de la consulta entre dos fechas
+	    /**
+ 		* Servicio para realizar el reporte de reservas en un rango determinado de fechas
+		 */
 	    public List<Reservation>reporteFechas(String date1, String date2){
 
 			SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
@@ -117,24 +117,15 @@ public class ReservationService {
 
 	    	
 	    }
-	    
-	 	//servicio para completed vs cancelled
-	    // public HashMap<String,Integer> countS(){
-
-	    // 	Map<String, Integer> nueva = new HashMap<>();	
-
-	    // 	int completed = repositoryR.getStatus("completed").size();
-		// 	int cancelled = repositoryR.getStatus("cancelled").size();
-
-	    // 	nueva.put("completed", completed);
-	    // 	nueva.put("cancelled", cancelled);
-			
-		// 	return (HashMap<String,Integer>) nueva;
-		// }
+	    /**
+ 		* Servicio para realizar el reporte del conteo de reservas por estado
+		 */
 		public CountReservation countS(){
 			return repositoryR.getStatus();
 		}
-
+		/**
+ 		* Servicio para realizar el reporte de clientes con más reservas completadas
+		 */
 		public List<TopClient> getTopClients(){
 			return repositoryR.getTopClients();
 		}

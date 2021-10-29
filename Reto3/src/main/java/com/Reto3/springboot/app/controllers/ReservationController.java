@@ -1,7 +1,6 @@
 package com.Reto3.springboot.app.controllers;
 
-import java.util.Date;
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Reto3.springboot.app.Models.entities.Client;
 import com.Reto3.springboot.app.Models.entities.Reservation;
 import com.Reto3.springboot.app.Models.reports.CountReservation;
 import com.Reto3.springboot.app.Models.reports.TopClient;

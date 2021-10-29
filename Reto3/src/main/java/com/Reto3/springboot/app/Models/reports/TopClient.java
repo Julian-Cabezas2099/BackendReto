@@ -5,13 +5,13 @@ import com.Reto3.springboot.app.Models.entities.Client;
 public class TopClient {
 
     private Long total;
-    private Client cliente;
+    private Client client;
 
     
 
-    public TopClient(Long total, Client cliente) {
+    public TopClient(Long total, Client client) {
         this.total = total;
-        this.cliente = cliente;
+        this.client = client;
     }
     public Long getTotal() {
         return total;
@@ -19,11 +19,11 @@ public class TopClient {
     public void setTotal(Long total) {
         this.total = total;
     }
-    public Client getCliente() {
-        return cliente;
+    public Client getclient() {
+        return client;
     }
-    public void setCliente(Client cliente) {
-        this.cliente = cliente;
+    public void setclient(Client client) {
+        this.client = client;
     }
 
     
